@@ -48,6 +48,7 @@ public class AreaCalculatorController extends HttpServlet {
         radius = request.getParameter("inputRadius");
             
         AreaCalculatorService service = new AreaCalculatorService();
+        try{
         switch(type){
             case RECTANGLE:
                 request.setAttribute("rectangleMessage", service.calculateArea(radius, height, width, type));
@@ -59,6 +60,9 @@ public class AreaCalculatorController extends HttpServlet {
             case CIRCLE:
                 request.setAttribute("circleMessage", service.calculateArea(radius, height, width, type));
                 break;
+        }
+        }catch(Exception ex){
+            
         }
     
 

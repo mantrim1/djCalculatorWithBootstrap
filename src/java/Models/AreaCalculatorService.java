@@ -10,9 +10,6 @@ package Models;
  * @author Mark
  */
 public class AreaCalculatorService {
-     private String message = "The area is ";
-    private final String ERROR_MESSAGE = "There was an error please check your input "+
-            "and try again.";
     private final String CIRCLE = "circle";
     private final String RECTANGLE = "rectangle";
     private final String TRIANGLE = "triangle";
@@ -20,7 +17,8 @@ public class AreaCalculatorService {
     private double dWidth;
     private double dRadius;
     private double area;
-    private final String DECIMAL_FORMAT = "%.2f";
+    private double output;
+ 
     
     private final double convertToDouble(String val) throws Exception{
         
@@ -29,61 +27,52 @@ public class AreaCalculatorService {
         return dVal;
     }
     
-    private final String calculateRectangleArea(String height, String width) throws Exception{
+    private final double calculateRectangleArea(String height, String width) throws Exception{
         
     
         
             dHeight = this.convertToDouble(height);
          dWidth = this.convertToDouble(width);
          area = (dWidth * dHeight);
-         return String.format(this.DECIMAL_FORMAT, area);
+         return area;
         
     }
-    private final String calculateTriangleArea(String height, String width) throws Exception{
+    private final double calculateTriangleArea(String height, String width) throws Exception{
        
          dHeight = this.convertToDouble(height);
          dWidth = this.convertToDouble(width);
          
          area = ((dWidth * dHeight)/2);
          
-         return String.format(this.DECIMAL_FORMAT, area);
+         return area;
     }
-    private final String calculateCircleArea(String radius)throws Exception{
+    private final double calculateCircleArea(String radius)throws Exception{
         dRadius = this.convertToDouble(radius);
         
         area = (dRadius*dRadius) * Math.PI;
         
-         return String.format(this.DECIMAL_FORMAT, area);
+         return area;
     }
-    public final String calculateArea(String radius, String height, String width, String shape){
+    public final double calculateArea(String radius, String height, String width, String shape)throws Exception{
          switch (shape.toLowerCase()) {
              case RECTANGLE:
-                 try{
-                     message += this.calculateRectangleArea(height, width);
-                 }catch(Exception ex){
-                      message = this.ERROR_MESSAGE;
-                 }
+                
+                    output =  this.calculateRectangleArea(height, width);
+                 
                  break;
              case TRIANGLE:
-                 try{
-                     message += this.calculateTriangleArea(height, width);
-                 }catch(Exception ex){
-                      message = this.ERROR_MESSAGE;
-                 }
+                 
+                     output = this.calculateTriangleArea(height, width);
+               
                  break;
              case CIRCLE:
-                    try{
-                        message += this.calculateCircleArea(radius);
-                    }catch(Exception ex){
-                         message = this.ERROR_MESSAGE;
-                    }
-                 break;
-             default:
-                  message = this.ERROR_MESSAGE;
-                 break;
+                    
+                      output =  this.calculateCircleArea(radius);
+                    break;
+          
          }
-        return message;
-    
+        
+         return output;
     }
     
     

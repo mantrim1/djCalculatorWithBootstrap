@@ -43,11 +43,15 @@
                box-shadow: 2px 2px 2px gray;
                border: 1px solid #009900;
             }
+            .results{
+                text-align: center;
+            }
         </style>
     </head>
     <body>
         
-        <div id="dialog" title="Results" class="alert alert-success">
+        <div id="dialog" title="Results" class="results">
+            <div><h3>The area is:
              <p class="results">
              ${rectangleMessage}
          </p>
@@ -57,6 +61,7 @@
           <p class="results">
              ${circleMessage}
          </p>
+         </div>
         </div>
          <div id="tabs">
              <ul>
