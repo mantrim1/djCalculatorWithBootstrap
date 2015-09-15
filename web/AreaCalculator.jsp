@@ -8,6 +8,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <%@ taglib prefix="fmt" 
+           uri="http://java.sun.com/jsp/jstl/fmt" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Area Calculator</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -53,13 +55,19 @@
         <div id="dialog" title="Results" class="results">
             <div><h3>The area is:
              <p class="results">
-             ${rectangleMessage}
+                 <fmt:formatNumber type="number" 
+            maxIntegerDigits="3" value="${rectangleMessage}" />
+             
          </p>
          <p class="results">
-             ${triangleMessage}
+              <fmt:formatNumber type="number" 
+            maxIntegerDigits="3" value="${triangleMessage}" />
+            
          </p>
           <p class="results">
-             ${circleMessage}
+                <fmt:formatNumber type="number" 
+            maxIntegerDigits="3" value="${circleMessage}" />
+             
          </p>
          </div>
         </div>
